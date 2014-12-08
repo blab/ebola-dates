@@ -1,6 +1,6 @@
 # Imputing sampling dates from sample IDs
 
-The file `samples.tsv` lists sample IDs and sampling dates if known. The notebook `dates-from-sample-ids.nb` reads this file and regresses a linear relationship between ordering of samples, i.e. G3757-5 is 1, G3769-5 is 2, etc... and known dates of sampling.
+The file [`samples.tsv`](`samples.tsv`) lists sample IDs and sampling dates if known. The notebook [`dates-from-sample-ids.nb`](`dates-from-sample-ids.nb`) reads this file and regresses a linear relationship between ordering of samples, i.e. G3757-5 is 1, G3769-5 is 2, etc... and known dates of sampling.
 
 This gives the following result:
 
@@ -12,4 +12,4 @@ This relationship is used to impute sample dates:
 
 ![](prediction.png)
 
-These predictions are output to the file `samples-imputed.tsv`, which includes 50% and 95% prediction intervals for each sample with unknown date.
+These predictions are output to the file [`samples-imputed.tsv`](`samples-imputed.tsv`), which includes 50% and 95% prediction intervals for each sample with unknown date.
