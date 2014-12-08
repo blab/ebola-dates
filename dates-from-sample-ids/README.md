@@ -22,7 +22,7 @@ Assuming a exponential relationship between G-index and date of sampling yields:
 
 ![](exponential-regression.png)
 
-The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.806. 
+The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.812. 
 
 This relationship is used to impute sample dates:
 
