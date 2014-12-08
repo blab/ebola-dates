@@ -28,4 +28,4 @@ This relationship is used to impute sample dates:
 
 ![](exponential-prediction.png)
 
-These predictions are output to the file [`exponential-imputation.tsv`](linear-imputation.tsv), which includes 50% and 95% prediction intervals for each sample with unknown date.
+These predictions are output to the file [`exponential-imputation.tsv`](exponential-imputation.tsv), which includes 50% and 95% prediction intervals for each sample with unknown date.
