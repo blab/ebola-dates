@@ -1,15 +1,31 @@
 # Imputing sampling dates from sample IDs
 
-The file [`samples.tsv`](samples.tsv) lists sample IDs and sampling dates if known. The notebook [`dates-from-sample-ids.nb`](dates-from-sample-ids.nb) reads this file and regresses a linear relationship between ordering of samples, i.e. G3757-5 is 1, G3769-5 is 2, etc... and known dates of sampling.
+The file [`samples.tsv`](samples.tsv) lists sample IDs and sampling dates if known. The notebook [`dates-from-sample-ids.nb`](dates-from-sample-ids.nb) reads this file and regresses ordering of samples, i.e. G3757-5 is 1, G3769-5 is 2, etc... against known dates of sampling.
 
-This gives the following result:
+## Linear model
 
-![](regression.png)
+Assuming a linear relationship between G-index and date of sampling yields:
 
-that shows a fairly well-behaved linear relationship between G-index and date of sampling with the lighter band showing the 95% prediction interval and the darker band showing the 50% prediction interval. *R*<sup>2</sup> for this relationship is 0.81. The only issue here is that the distribution of dates for a given G-index does not appear normal. 
+![](linear-regression.png)
+
+The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.806. 
 
 This relationship is used to impute sample dates:
 
-![](prediction.png)
+![](linear-prediction.png)
 
-These predictions are output to the file [`samples-imputed.tsv`](samples-imputed.tsv), which includes 50% and 95% prediction intervals for each sample with unknown date.
+These predictions are output to the file [`linear-imputation.tsv`](linear-imputation.tsv), which includes 50% and 95% prediction intervals for each sample with unknown date.
+
+## Exponential model
+
+Assuming a exponential relationship between G-index and date of sampling yields:
+
+![](exponential-regression.png)
+
+The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.806. 
+
+This relationship is used to impute sample dates:
+
+![](exponential-prediction.png)
+
+These predictions are output to the file [`exponential-imputation.tsv`](linear-imputation.tsv), which includes 50% and 95% prediction intervals for each sample with unknown date.
