@@ -2,7 +2,9 @@
 
 The file [`samples.tsv`](samples.tsv) lists sample IDs and sampling dates if known. The notebook [`dates-from-sample-ids.nb`](dates-from-sample-ids.nb) reads this file and regresses sample ID against known date of sampling.
 
-ordering of samples, i.e. G3757-5 is 1, G3769-5 is 2, etc... against known dates of sampling.
+Only the first sample is used when a patient has multiple samples. For example, patient G3892 has two samples G3892-1 (dated 2014-06-20) and G3892-2 (dated 2014-07-08). In this case, I only use G3892-1.
+
+The goal is to predict the date of sampling for samples without known dates. Here, I only predict dates for first isolations.
 
 ## Samples ordered by G-index
 
@@ -14,7 +16,7 @@ Assuming a linear relationship between G-index and date of sampling yields:
 
 ![](ordered-linear-regression.png)
 
-The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.830. 
+The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.874. 
 
 This relationship is used to impute sample dates:
 
@@ -28,7 +30,7 @@ Assuming a exponential relationship between G-index and date of sampling yields:
 
 ![](ordered-exponential-regression.png)
 
-The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.827. 
+The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.901.
 
 This relationship is used to impute sample dates:
 
@@ -46,7 +48,7 @@ Assuming a linear relationship between G-index and date of sampling yields:
 
 ![](direct-linear-regression.png)
 
-The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.879. 
+The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.917. 
 
 This relationship is used to impute sample dates:
 
@@ -60,7 +62,7 @@ Assuming a exponential relationship between G-index and date of sampling yields:
 
 ![](direct-exponential-regression.png)
 
-The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.777. 
+The lighter band shows the 95% prediction interval and the darker band showing the 50% prediction interval. Adjusted *R*<sup>2</sup> for this relationship is 0.839. 
 
 This relationship is used to impute sample dates:
 
@@ -70,4 +72,4 @@ These predictions are output to the file [`direct-exponential-imputation.tsv`](d
 
 ## Discussion
 
-The direct / linear model gives the best adjusted *R*<sup>2</sup> to the training data at 0.879. However, this model appears to under-estimate the most samples (placing them in Sep rather than Nov).
+The direct / linear model gives the best adjusted *R*<sup>2</sup> to the training data at 0.917. However, this model may under-estimate the most recent samples (placing them in Oct rather than Nov).
